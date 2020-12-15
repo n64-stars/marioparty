@@ -9,7 +9,9 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   let ppp;
+  console.log(req.body);
   for (ppp in req.body) {
+    console.log(ppp);
     const p = await Player.findById(ppp.playerId);
     p.points.push(ppp.newPoints);
     await p.save();
