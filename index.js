@@ -2,13 +2,14 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 
-const dbUrl = "mongodb+srv://rovms:GkiuE2WzVB1v7b3L@cluster0.0fpzr.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const dbUrl = process.env.DB_URL;
 
 if (!dbUrl) {
   console.log("DB not configured correctly: ");
